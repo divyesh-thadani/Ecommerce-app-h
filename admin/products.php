@@ -1,6 +1,45 @@
 <?php session_start(); ?>
 <?php include_once("./templates/top.php"); ?>
 <?php include_once("./templates/navbar.php"); ?>
+<!-- 
+$conn = mysqli_connect('localhost', 'root', '', 'ecommerceapp');
+// Define Total Number of Results to be Displayed.
+$results_per_page = 5;
+
+// Find the Total Number of Results stored in the DataBase.
+$result = mysqli_query($conn, "SELECT product_id FROM products");
+$number_of_result = mysqli_fetch_row($result);
+
+
+// Determine Total Number of Pages available
+$number_of_page = ceil($number_of_result / $results_per_page);
+
+
+// Detemine on which Page Number user is actually on.
+if(!isset ($_GET['page'])){
+  $page = 1;
+}
+else{
+  $page = $_GET['page'];
+}
+
+// Determine the SQL limit starting number for the results displaying on page.
+$page_first_result = ($page=1 * $results_per_page);
+
+
+// Retrieve the Selected Results from the DataBase.
+$query = "SELECT * FROM `products` LIMIT" . $page_first_result . ',' . $results_per_page;
+$result = mysqli_query($conn, $query);
+
+// Display the Retrieved Result from the DatBase.
+while($row = mysqli_fetch_array($result)){
+  echo $row['product_title'] . '' . $row['product_price'] . '<br>';
+}
+
+// Display the Link of Pages in URL.
+for($page=1; $page <= $number_of_page; $page++){
+  echo '<a> href="index.php?page=' . $page . '">' . $page . '</a>';
+} -->
 <div class="container-fluid">
   <div class="row">
     

@@ -285,9 +285,8 @@ if (isset($_POST["Common"])) {
 					//Paypal checkout form
 					echo '
 						</form>
-						<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+						<form action="payments.php" method="post">
 							<input type="hidden" name="cmd" value="_cart">
-							<input type="hidden" name="business" value="shoppingcart@ecommerceastro.com">
 							<input type="hidden" name="upload" value="1">';
 							  
 							$x=0;
@@ -306,11 +305,11 @@ if (isset($_POST["Common"])) {
 								'<input type="hidden" name="return" value="http://localhost/project1/payment_success.php"/>
 					                <input type="hidden" name="notify_url" value="http://localhost/ecommerce-app-h/payment_success.php">
 									<input type="hidden" name="cancel_return" value="http://localhost/ecommerce-app-h/cancel.php"/>
-									<input type="hidden" name="currency_code" value="USD"/>
+									<input type="hidden" name="currency_code" value="INR"/>
 									<input type="hidden" name="custom" value="'.$_SESSION["uid"].'"/>
 									<input style="float:right;margin-right:80px;" type="image" name="submit"
-										src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypalcheckout-60px.png" alt="PayPal Checkout"
-										alt="PayPal - The safer, easier way to pay online">
+										src="https://cdn.vectorstock.com/i/1000x1000/01/22/cash-on-delivery-rubber-stamp-vector-12390122.webp" alt="COD Checkout"
+										alt="COD - The safer, easier way to pay online">
 								</form>';
 				}
 			}
