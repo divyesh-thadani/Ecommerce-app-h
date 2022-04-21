@@ -38,11 +38,12 @@ if(isset($_POST["brand"])){
 		echo "</div>";
 	}
 }
+// Pagination
 if(isset($_POST["page"])){
 	$sql = "SELECT * FROM products";
 	$run_query = mysqli_query($con,$sql);
 	$count = mysqli_num_rows($run_query);
-	$pageno = ceil($count/9);
+	$pageno = ceil($count/10);
 	for($i=1;$i<=$pageno;$i++){
 		echo "
 			<li><a href='#' page='$i' id='page'>$i</a></li>
@@ -50,7 +51,7 @@ if(isset($_POST["page"])){
 	}
 }
 if(isset($_POST["getProduct"])){
-	$limit = 9;
+	$limit = 10;
 	if(isset($_POST["setPage"])){
 		$pageno = $_POST["pageNumber"];
 		$start = ($pageno * $limit) - $limit;
@@ -282,7 +283,7 @@ if (isset($_POST["Common"])) {
 							</form>';
 					
 				}else if(isset($_SESSION["uid"])){
-					//Paypal checkout form
+					//COD checkout form
 					echo '
 						</form>
 						<form action="payments.php" method="post">

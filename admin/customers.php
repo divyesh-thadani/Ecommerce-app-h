@@ -114,6 +114,8 @@
 </div>
 <!-- Modal -->
 
+
+<?php include ("import csv.php")?>
 <?php include_once("./templates/footer.php"); ?>
 
 

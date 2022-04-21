@@ -1,45 +1,6 @@
 <?php session_start(); ?>
 <?php include_once("./templates/top.php"); ?>
 <?php include_once("./templates/navbar.php"); ?>
-<!-- 
-$conn = mysqli_connect('localhost', 'root', '', 'ecommerceapp');
-// Define Total Number of Results to be Displayed.
-$results_per_page = 5;
-
-// Find the Total Number of Results stored in the DataBase.
-$result = mysqli_query($conn, "SELECT product_id FROM products");
-$number_of_result = mysqli_fetch_row($result);
-
-
-// Determine Total Number of Pages available
-$number_of_page = ceil($number_of_result / $results_per_page);
-
-
-// Detemine on which Page Number user is actually on.
-if(!isset ($_GET['page'])){
-  $page = 1;
-}
-else{
-  $page = $_GET['page'];
-}
-
-// Determine the SQL limit starting number for the results displaying on page.
-$page_first_result = ($page=1 * $results_per_page);
-
-
-// Retrieve the Selected Results from the DataBase.
-$query = "SELECT * FROM `products` LIMIT" . $page_first_result . ',' . $results_per_page;
-$result = mysqli_query($conn, $query);
-
-// Display the Retrieved Result from the DatBase.
-while($row = mysqli_fetch_array($result)){
-  echo $row['product_title'] . '' . $row['product_price'] . '<br>';
-}
-
-// Display the Link of Pages in URL.
-for($page=1; $page <= $number_of_page; $page++){
-  echo '<a> href="index.php?page=' . $page . '">' . $page . '</a>';
-} -->
 <div class="container-fluid">
   <div class="row">
     
@@ -146,12 +107,15 @@ for($page=1; $page <= $number_of_page; $page++){
 		        		<input type="text" name="product_keywords" class="form-control" placeholder="Enter Product Keywords">
 		        	</div>
         		</div>
-        		<div class="col-12">
-        			<div class="form-group">
+        		<div class="col-6">
+        			<div class="form-group" id="image_box">
 		        		<label>Product Image <small>(format: jpg, jpeg, png)</small></label>
 		        		<input type="file" name="product_image" class="form-control">
 		        	</div>
         		</div>
+            <div class="col-4">
+          <button type="button" class="btn btn-primary add-product" onclick="add_more_images()">Add Image</button>
+        </div>
         		<input type="hidden" name="add_product" value="1">
         		<div class="col-12">
         			<button type="button" class="btn btn-primary add-product">Add Product</button>
@@ -250,3 +214,9 @@ for($page=1; $page <= $number_of_page; $page++){
 
 
 <script type="text/javascript" src="./js/products.js"></script>
+<script>
+  function add_more_images(){
+    var html='<div class="col-9"><div class="form-group" id="image_box"><input type="file" name="product_image" class="form-control"></div></div>';
+    jQuery('#image_box').after(html);
+  }
+</script>

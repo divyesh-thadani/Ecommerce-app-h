@@ -28,6 +28,8 @@
 
 
 
-<?php include "./templates/footer.php"; ?>
+<?php include "./templates/footer.php"; 
+
+?>
 
 <script type="text/javascript" src="./js/main.js"></script>
