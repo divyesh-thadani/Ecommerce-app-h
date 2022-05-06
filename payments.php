@@ -44,12 +44,40 @@ echo "Thank You for Buying with us. We hope to see you soon."
 </head>
 <body class="text-center">
     <div class="form-signin bg-light">
-        <form action="payment_success.php" method="post">
-            <img class="mb-4" src="https://www.dropbox.com/s/zgbbayj1iqd9fjf/CF_Mark.jpg?raw=1" alt="" width="72">
-            <h1 class="h3 mb-3 fw-normal">Continue</h1>
-            <button class="w-100 btn btn-lg btn-dark" type="submit">Click Here</button>
-            <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
-        </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <form>
+    <input type="textbox" name="name" id="name" placeholder="Enter your name"/><br/><br/>
+    <input type="textbox" name="amt" id="amt" placeholder="Enter amt"/><br/><br/>
+    <input type="button" name="btn" id="btn" value="Pay Now" onclick="pay_now()"/>
+    </form>
+    <script>
+    function pay_now(){
+        var name=jQuery('#name').val();
+        var amt=jQuery('#amt').val();
+        var options={
+            "key": "rzp_test_fiAx08cY6bevM7",
+            "amount": amt *100,
+            "currency": "INR",
+            "name": "Acme Corp",
+            "description": "Test Transaction",
+            "image": "https://image.freepik.com/free-vector/logo-sample-text_355-558.jpg",
+            "handler": function (response){
+                jQuery.ajax({
+                    type: 'post',
+                    url: 'payment_success.php',
+                    data: "payment_id="+response.razorpay_payment_id+"&amt="+amt+"&name="+name,
+                    success:function(result){
+                        window.location.href="thank_you.php";
+                    }
+                });
+            }
+        };
+        var rzp1=new Razorpay (options);
+        rzp1.open();
+    }
+    </script>
+
     </div>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"

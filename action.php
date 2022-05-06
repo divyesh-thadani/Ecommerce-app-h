@@ -301,18 +301,11 @@ if (isset($_POST["Common"])) {
 								     <input type="hidden" name="amount_'.$x.'" value="'.$row["product_price"].'">
 								     <input type="hidden" name="quantity_'.$x.'" value="'.$row["qty"].'">';
 								}
-							  
-							echo   
-								'<input type="hidden" name="return" value="http://localhost/project1/payment_success.php"/>
-					                <input type="hidden" name="notify_url" value="http://localhost/ecommerce-app-h/payment_success.php">
-									<input type="hidden" name="cancel_return" value="http://localhost/ecommerce-app-h/cancel.php"/>
-									<input type="hidden" name="currency_code" value="INR"/>
-									<input type="hidden" name="custom" value="'.$_SESSION["uid"].'"/>
-									<input style="float:right;margin-right:80px;" type="image" name="submit"
-										src="https://cdn.vectorstock.com/i/1000x1000/01/22/cash-on-delivery-rubber-stamp-vector-12390122.webp" alt="COD Checkout"
-										alt="COD - The safer, easier way to pay online">
-								</form>';
-				}
+								
+								echo '<input type="image" src="./Cash On Delivery Png - Cash On Delivery Logo Png, Transparent Png(573x548) - PngFind.jfif" alt="Submit" width="48" height="48">';
+								
+								echo "</form>";
+							}
 			}
 	}
 	
